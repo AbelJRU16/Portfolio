@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Abel Jose Robles Useche - Front-End Developer</title>
+        <!-- Removes # in Angular routes -->
+        <base href="/">
+        <!-- Google font -->
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="img/xl.png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+        <!-- Compiled and concatenated custom scss -->
+        <style type="text/css">
+            
+            footer {
+                background: linear-gradient(#0F0F0F,#000);
+                padding: 2rem 0;
+            }
+            footer small{
+                color: white;
+            }
+            footer a{
+                color: white;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            h2{
+                text-transform: uppercase;
+            }
+            header {
+                background: linear-gradient(var(--black),var(--black2));
+                overflow: hidden;
+                padding: 5rem 0 3rem;
+                position: relative;
+            }
+            header > .bg-header {
+                left: 50%;
+                min-height: 100%;
+                min-width: 100%;
+                opacity: .2;
+                position: absolute;
+                top: 50%;
+                transform: translate(-50%,-50%);
+            }
+            section hr {
+                margin-bottom: 5rem;
+            }
+            hr.dark {
+                background-image: linear-gradient(to right,transparent,#000,transparent);
+                border: 0;
+                height: .1rem;
+                max-width: 100%;
+            }
+            hr.light {
+                background-image: linear-gradient(to right,transparent,#FFF,transparent);
+                border: 0;
+                height: .1rem;
+                max-width: 100%;
+            }
+            nav .container-fluid div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 3px;
+                margin: 0px 10px
+            }
+            .modal-slider {
+                width: 50px;
+                height: 100%;
+                background: #00000005;
+                position: absolute;
+                top: 0px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+            .modal-slider:hover{
+                background: #00000010;
+            }
+            .modal-slider-left{                
+                left: 0px;
+            }
+            .modal-slider-right{
+                right: 0px;
+            }
+            .portfolio-image {
+                max-width: 400px;
+                width: 100%;
+                padding: 10px;
+            }
+            .section{
+                padding: 5rem 0;
+            }
+            .circle{
+                border-radius: 100%;
+            }
+            .text-justify{
+                text-align: justify;
+            }
+            .text-white{
+                color: white !important;
+            }
+
+            #portfolio button:before, #experience button:before {
+                background-color: #000;
+                content: "";
+                height: 100%;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                transition: opacity .3s ease;
+                width: 100%;
+                z-index: 1;
+            }
+
+            #portfolio button, #experience button {
+                border: none;
+                box-shadow: 0 0 10px lightgray;
+                cursor: pointer;
+                display: block;
+                margin: 1rem;
+                width: 100%;
+                min-height: 200px;
+                flex: 30%;
+                overflow: hidden;
+                padding: 0;
+                position: relative;
+            }
+
+            #portfolio button:after, #experience button:after {
+                content: url(img/zoom.svg);
+                left: 50%;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                transform: translate(-40%,-55%);
+                transition: top .3s ease,opacity .3s ease;
+                width: 50%;
+                z-index: 2;
+            }
+
+            #portfolio button.experience:after, #experience button.experience:after {
+                content: url(img/briefcase.svg);
+                left: 46.5%;
+                width: 35%;
+                transform: translate(-40%,-50%);
+            }
+
+            #portfolio button:hover:before, #experience button:hover:before {
+                opacity: .75;
+            }
+
+            #portfolio button:hover:after, #experience button:hover:after {
+                opacity: .75;
+                top: 50%;
+            }
+
+            #portfolio button:hover h4, #experience button:hover h4 {
+                bottom: 20%;
+                opacity: 1;
+            }
+
+            #portfolio button:hover img, #experience button:hover img {
+                transform: scale(1.25);
+            }
+
+            #portfolio .container-portfolio, #experience .container-portfolio {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 1rem;
+            }
+
+            #portfolio h4, #experience h4 {
+                bottom: 0;
+                color: white;
+                display: block;
+                left: 50%;
+                margin: 0;
+                opacity: 0;
+                position: absolute;
+                transform: translate(-50%,50%);
+                transition: bottom .3s ease,opacity .3s ease;
+                z-index: 2;
+            }
+
+            #portfolio img, #experience img {
+                display: block;
+                max-height: 300px;
+                transition: transform .3s ease;
+                width: 100%;
+            }
+
+            #resumeModalTags {
+                padding: 15px 0 0px;
+                display: flex;
+                flex-flow: wrap;
+                justify-content: center;
+                gap: 5px;
+            }
+
+            #resumeModalTags span {
+                padding: 5px 10px;
+                background: gray;
+                color: white;
+                font-weight: bolder;
+                border-radius: 20px;
+            }
+
+            #skillset>div {
+                gap: 1rem;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                margin: 1rem;
+            }
+
+            #skillset>div>div {
+                position: relative;
+                flex: 18%;
+            }
+
+            #skillset>div>div:hover span {
+                opacity: 1;
+                transform: translate(-60px);
+            }
+
+            #skillset img {
+                border-radius: 1rem;
+                cursor: context-menu;
+                max-width: 7rem;
+            }
+
+            #skillset span {
+                background-color: rgba(0,0,0,.75);
+                border-radius: .5rem;
+                left: 50%;
+                opacity: 0;
+                padding: .5rem 0;
+                pointer-events: none;
+                position: absolute;
+                text-align: center;
+                top: -40px;
+                transform: translate(-60px,10px);
+                transition: opacity .3s ease,transform .3s ease;
+                width: 120px;
+                z-index: 1;
+            }
+
+            #skillset span:after {
+                border: 5px solid transparent;
+                border-top-color: rgba(0,0,0,.75);
+                content: "";
+                left: 50%;
+                margin-left: -5px;
+                position: absolute;
+                top: 100%;
+            }
+
+            #social-media a {
+                text-decoration: none;
+            }
+
+            #social-media img {
+                background-color: #fff;
+                border-radius: 10rem;
+                margin: 1rem;
+                transition: all .3s ease;
+                filter: grayscale(1);
+            }
+
+            #social-media img:hover {
+                background-color: #000;
+            }
+
+            @media(max-width: 1023px) {
+                #experience button {
+                    flex: 25%;
+                }
+            }
+
+            @media(max-width: 767px) {
+                #skillset>div>div {
+                    flex: 30%;
+                }
+                #portfolio button, #experience button {
+                    flex: 45%;
+                }
+            }
+
+            @media(max-width: 424px) {
+                #skillset>div>div {
+                    flex: 45%;
+                }
+                #portfolio button, #experience button {
+                    flex: 100%;
+                    height: calc(100vw - 184px);
+                }
+            }
+
+            @media(max-width: 360px) {
+                .navbar-brand{
+                    width: calc(100vw - 140px);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+
+            .nav-item:target{
+                background: red;
+            }
+            
+        </style>
+    </head>
+    <body class="text-center" data-spy="scroll" data-target="#collapsible">
+        <!-- Header-->
+        <header id="header">
+            <img class="circle" src="img/xl.png">
+            <h1>Abel Jose Robles Useche</h1>
+            <hr class="dark">
+            <h2>Front-End Developer</h2>
+            <img class="bg-header" src="img/bg/bg.gif">
+        </header>
+        <!-- Navbar-->
+        <nav class="navbar navbar-expand-lg bg-dark text-white sticky-top" data-bs-theme="dark" style="top: -1px;">
+            <div class="container-fluid">
+                <div>
+                    <img class="circle" src="img/xs.png">
+                    <a class="navbar-brand" href="#" style="color: white !important;">Abel Jose Robles Useche</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown" style="flex-grow: initial;">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#portfolio" style="color: #FFF;">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skillset" style="color: #FFF;">Skillset</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#experience" style="color: #FFF;">Experience</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact" style="color: #FFF;">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Project section -->
+        <section id="portfolio" class="odd section">
+            <h2>Portfolio</h2>
+            <hr class="dark">
+            <div class="container-portfolio">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal" onclick="showPorfolio(0)">
+                    <img src="img/portfolio/hcl.jpg">
+                    <h4>HCL</h4>
+                </button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal" onclick="showPorfolio(1)">
+                    <img src="img/portfolio/ama.jpg">
+                    <h4>AMA</h4>
+                </button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal" onclick="showPorfolio(2)">
+                    <img src="img/portfolio/descomplicate.jpg">
+                    <h4>Descomplicate</h4>
+                </button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal" onclick="showPorfolio(3)">
+                    <img src="img/portfolio/sivoy.jpg">
+                    <h4>Sivoy!</h4>
+                </button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal" onclick="showPorfolio(4)">
+                    <img src="img/portfolio/dkp.JPG">
+                    <h4>DKP Latam</h4>
+                </button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#portfolioModal" onclick="showPorfolio(5)">
+                    <img src="img/portfolio/fitlab.JPG">
+                    <h4>Fitlab Panama</h4>
+                </button>
+            </div>
+        </section>
+        <!-- Portfolio modal -->
+        <div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="portfolioModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="currentPortfolio">
+                        <img class="portfolio-image" src="img/portfolio/hdrgallery.png" id="portfolioModalImage">
+                        <div style="display: flex; gap: 5px; justify-content: space-around; text-align: left;">
+                            <div style="text-align: center;">
+                                <h4 class="m-0">At</h4>
+                                <p class="text-justify" id="portfolioModalCompany"></p>
+                            </div>
+                            <div style="text-align: center;">
+                                <h4 class="m-0">Role</h4>
+                                <p class="text-justify" id="portfolioModalRole"></p>
+                            </div>
+                        </div>
+                        <h4 class="m-0">About</h4>
+                        <p class="text-justify m-0" id="portfolioModalDescription"></p>
+                        <div class="modal-slider modal-slider-left" onclick="changePorfolio('minus')">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+                        </div>
+                        <div class="modal-slider modal-slider-right" onclick="changePorfolio('plus')">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a type="button" class="btn btn-primary" id="portfolioModalLink" href="#" target="_blank">Visit page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Skillset section -->
+        <section id="skillset" class="odd section bg-dark text-white" data-bs-theme="dark">
+            <h2>Skillset</h2>
+            <hr class="light">
+            <div class="container-skillset">
+                <div>
+                    <img src="img/skills/html.svg"> 
+                    <span class="tooltip">HTML</span>
+                </div>
+                <div>
+                    <img src="img/skills/css.svg"> 
+                    <span class="tooltip">CSS</span>
+                </div>
+                <div>
+                    <img src="img/skills/bootstrap.svg"> 
+                    <span class="tooltip">Bootstrap</span>
+                </div>
+                <div>
+                    <img src="img/skills/git.svg"> 
+                    <span class="tooltip">GIT</span>
+                </div>
+                <div>
+                    <img src="img/skills/bash.svg"> 
+                    <span class="tooltip">Bash</span>
+                </div>
+                <div>
+                    <img src="img/skills/jquery.svg"> 
+                    <span class="tooltip">Jquey</span>
+                </div>
+                <div>
+                    <img src="img/skills/js.svg"> 
+                    <span class="tooltip">javascript</span>
+                </div>
+                <div>
+                    <img src="img/skills/node.svg"> 
+                    <span class="tooltip">Node js</span>
+                </div>
+                <div>
+                    <img src="img/skills/npm.svg"> 
+                    <span class="tooltip">NPM</span>
+                </div>
+                <div>
+                    <img src="img/skills/sublime.svg"> 
+                    <span class="tooltip">Sublime</span>
+                </div>
+                <div>
+                    <img src="img/skills/typescript.svg"> 
+                    <span class="tooltip">Typescript</span>
+                </div>
+                <div>
+                    <img src="img/skills/firebase.svg"> 
+                    <span class="tooltip">Firebase</span>
+                </div>
+                <div>
+                    <img src="img/skills/vuejs.png"> 
+                    <span class="tooltip">Vuejs</span>
+                </div>
+                <div>
+                    <img src="img/skills/php.png"> 
+                    <span class="tooltip">PHP</span>
+                </div>
+                <div>
+                    <img src="img/skills/wordpress.png"> 
+                    <span class="tooltip">Wordpress</span>
+                </div>
+            </div>
+        </section>
+        <!-- Experience section -->
+        <section id="experience" class="odd section">
+            <h2>Experience</h2>
+            <hr class="dark">
+            <div class="container-portfolio">
+                <button class="experience" type="button" data-bs-toggle="modal" data-bs-target="#resumeModal" onclick="showResume(0)">
+                    <img src="img/experience/cronapis.png">
+                    <h4>Cronapis Corp SA</h4>
+                </button>
+                <button class="experience" type="button" data-bs-toggle="modal" data-bs-target="#resumeModal" onclick="showResume(1)">
+                    <img src="img/experience/pdvsa.png">
+                    <h4>PDVSA</h4>
+                </button>
+                <button class="experience" type="button" data-bs-toggle="modal" data-bs-target="#resumeModal" onclick="showResume(2)">
+                    <img src="img/experience/iontech.png">
+                    <h4>Ion Tech</h4>
+                </button>
+            </div>
+        </section>
+        <!-- Resume modal -->
+        <div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="resumeModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="currentExperience">
+                        <img class="portfolio-image" src="img/portfolio/hdrgallery.png" id="resumeModalImage">
+                        <p class="text-justify m-0" id="resumeModalDescription"></p>
+                        <div id="resumeModalTags"></div>
+                        <div class="modal-slider modal-slider-left" onclick="changeExperience('minus')">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+                        </div>
+                        <div class="modal-slider modal-slider-right" onclick="changeExperience('plus')">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a type="button" class="btn btn-primary" id="resumeModalLink" href="#" target="_blank">Visit page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact -->
+        <section id="contact" class="odd section bg-dark text-white" data-bs-theme="dark">
+            <h2>Contact</h2>
+            <hr class="light">
+            <div id="social-media">
+                <a href="https://www.linkedin.com/in/abel-robles-82a645209" target="_blank">
+                    <img id="linkedin" src="img/social/linkedin.png">
+                </a>
+                &nbsp;
+                <a href="https://github.com/GroundedBeef" target="_blank">
+                    <img id="github" src="img/social/github.png">
+                </a>
+                &nbsp;
+                <a href='mailto:abeljru16@gmail.com' target="_blank">
+                    <img id="facebook" src="img/social/mail.png" style="width: 40px; height: 40px;">
+                </a>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer id="footer">
+            <small>Developed and designed by <a href='mailto:abeljru16@gmail.com'>Abel Robles</a>. ©2023. All rights reserved.</small> 
+        </footer>
+        <!-- scripts -->
+        <script src="js/app.js"></script>
+    </body>
+</html>
